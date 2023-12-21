@@ -56,7 +56,7 @@ REST_FRAMEWORK = {
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -149,9 +149,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
     BASE_DIR / 'frontend/build/static'
 ]
-# STATICFILES_DIRS = (
-#     os.path.join(os.path.join(BASE_DIR, 'frontend'), 'build', 'static'),
-# )
+
 
 MEDIA_ROOT = BASE_DIR / 'static/images'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
