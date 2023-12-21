@@ -28,7 +28,7 @@ SECRET_KEY = 'sc%oco$+(3$z$at=z4j)#l-+ym)+_b11389mdt2^12m$bf63%@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*','.vercel.app']
+ALLOWED_HOSTS = ['*','.vercel.app','.now.sh']
 
 
 # Application definition
@@ -158,7 +158,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 CORS_ALLOW_ALL_ORIGINS = True
 
-if os.getcwd() == '/app' :
+if os.getcwd() == '.app' :
     DEBUG = False
 
 
