@@ -104,7 +104,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 #     }
 # }
 database_url = os.environ.get("DATABASE_URL")
-DATABASES["default"] = dj_database_url.parse(database_url)
+DATABASES={'default' : {dj_database_url.parse(database_url)}}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -163,8 +163,6 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 CORS_ALLOW_ALL_ORIGINS = True
 
-if os.getcwd() == '.app' :
-    DEBUG = False
 
 
 
