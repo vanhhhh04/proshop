@@ -24,12 +24,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'sc%oco$+(3$z$at=z4j)#l-+ym)+_b11389mdt2^12m$bf63%@'
 
+# SECRET_KEY = 'sc%oco$+(3$z$at=z4j)#l-+ym)+_b11389mdt2^12m$bf63%@'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
-ALLOWED_HOSTS = ['*','.vercel.app','.now.sh']
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
 
 # Application definition
@@ -102,9 +103,9 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 #         'PORT':5432
 #     }
 # }
-
+database_url = os.environ.get("DATABASE_URL")
 DATABASES = {
-    'default': dj_database_url.parse("postgres://proshop_1ez3_user:nwxvTqjNQVlcSyWJ3XeplFOE64egh1ri@dpg-cmgahgo21fec739os2vg-a.oregon-postgres.render.com/proshop_1ez3", conn_max_age=600),
+    'default': dj_database_url.parse("database_url", conn_max_age=600),
 }
 
 AUTH_PASSWORD_VALIDATORS = [
