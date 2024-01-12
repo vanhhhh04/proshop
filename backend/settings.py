@@ -16,6 +16,7 @@ from pathlib import Path
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -91,18 +92,20 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'proshop_1ez3',
+#         'USER':'proshop_1ez3_user',
+#         'PASSWORD':'nwxvTqjNQVlcSyWJ3XeplFOE64egh1ri',
+#         'HOST':'dpg-cmgahgo21fec739os2vg-a',
+#         'PORT':5432
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'verceldb',
-        'USER':'default',
-        'PASSWORD':'VH3OwKStRu5i',
-        'HOST':'ep-plain-math-47044680-pooler.us-east-1.postgres.vercel-storage.com',
-        'PORT':5432
-    }
+    'default': dj_database_url.parse("postgres://proshop_1ez3_user:nwxvTqjNQVlcSyWJ3XeplFOE64egh1ri@dpg-cmgahgo21fec739os2vg-a.oregon-postgres.render.com/proshop_1ez3", conn_max_age=600),
 }
-
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
