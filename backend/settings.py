@@ -104,9 +104,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 #     }
 # }
 database_url = os.environ.get("DATABASE_URL")
-DATABASES = {
-    'default': dj_database_url.parse("database_url", conn_max_age=600),
-}
+DATABASES["default"] = dj_database_url.parse(database_url)
 
 AUTH_PASSWORD_VALIDATORS = [
     {
