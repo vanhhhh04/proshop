@@ -29,8 +29,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+# DEBUG = True
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS")
+# ALLWOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -103,9 +105,10 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 #         'PORT':5432
 #     }
 # }
-database_url = os.environ.get("DATABASE_URL")
-DATABASES={'default' : {dj_database_url.parse(database_url)}}
-
+database_url = os.environ.get('DATABASE_URL')
+DATABASES = {
+    'default': dj_database_url.parse(database_url, conn_max_age=600),
+}
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
