@@ -44,7 +44,11 @@ def getProducts(request):
 def getTopProducts(request):
     products = Product.objects.filter(rating__gte=4).order_by('-rating')[0:5]
     for i in products :
-        i.image = "https://res.cloudinary.com/dp1gyfstq/image/upload/"+str(i.image)+".jpg"
+        if i.name != 'Sample Name' :
+            i.image = "https://res.cloudinary.com/dp1gyfstq/image/upload/"+str(i.image)+".jpg"
+        else :
+            i.image = "https://res.cloudinary.com/dp1gyfstq/image/upload/v1705052188/onbhaxwokerrlnmrkz9j.jpg"
+
 
     serializer = ProductSerializer(products, many=True)
 
@@ -55,9 +59,13 @@ def getTopProducts(request):
 def getProduct(request, pk):
     product = Product.objects.get(_id=pk)
     print(product.image)
-    product.image = "https://res.cloudinary.com/dp1gyfstq/image/upload/"+str(product.image)+".jpg"
+    if product.name != 'Sample Name' :
+        product.image = "https://res.cloudinary.com/dp1gyfstq/image/upload/"+str(product.image)+".jpg"
+    else :
+        product.image = "https://res.cloudinary.com/dp1gyfstq/image/upload/v1705052188/onbhaxwokerrlnmrkz9j.jpg"
     serializer = ProductSerializer(product, many=False)
     return Response(serializer.data)
+
 
 
 @api_view(['POST'])
@@ -72,7 +80,9 @@ def createProduct(request):
         brand='Sample Brand',
         countInStock=0,
         category='Sample Category',
-        description=''
+        description='',
+        image='https://res.cloudinary.com/dp1gyfstq/image/upload/v1705052188/onbhaxwokerrlnmrkz9j.jpg',
+
     )
 
     serializer = ProductSerializer(product, many=False)

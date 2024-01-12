@@ -32,7 +32,7 @@ DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 # DEBUG = True
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
-# ALLWOWED_HOSTS = ['*']
+# ALLWOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -46,7 +46,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'base.apps.BaseConfig',
+
     "corsheaders",
     'rest_framework',
     'cloudinary',
@@ -98,11 +100,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'proshop_1ez3',
-#         'USER':'proshop_1ez3_user',
-#         'PASSWORD':'nwxvTqjNQVlcSyWJ3XeplFOE64egh1ri',
-#         'HOST':'dpg-cmgahgo21fec739os2vg-a',
-#         'PORT':5432
+#         'NAME': 'proshop',
+#         'USER':'postgres',
+#         'PASSWORD':'postgres',
+#         'HOST':'localhost',
+#         'PORT':5433
 #     }
 # }
 database_url = os.environ.get('DATABASE_URL')
@@ -163,8 +165,8 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
 
-# STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 CORS_ALLOW_ALL_ORIGINS = True
 

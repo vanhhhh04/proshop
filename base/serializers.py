@@ -51,6 +51,7 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = '__all__'
+        extra_kwargs = {'image': {'required': True}}
 
     def get_reviews(self, obj):
         reviews = obj.review_set.all()
